@@ -3,8 +3,7 @@ import { analyzeState, DEFAULT_THRESHOLDS } from '../utils/nexusEngine';
 import { calculateDeadlines } from '../utils/deadlines';
 import { exportNexusAnalysis } from '../utils/exportCSV';
 
-// Fallback host detection for dev and production Docker containers
-const API_BASE = import.meta.env.VITE_API_URL || '';
+
 
 export const useNexusStore = create((set, get) => ({
   rawRows: [],           // Parsed CSV rows { state, revenue, transactions }
@@ -94,7 +93,7 @@ export const useNexusStore = create((set, get) => ({
     };
 
     try {
-      const response = await fetch(`${API_BASE}/api/brief`, {
+      const response = await fetch('/api/brief', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
