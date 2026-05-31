@@ -20,13 +20,16 @@ router.post('/brief', async (req, res) => {
       return res.json({ brief: mockBrief });
     }
 
-    const systemPrompt = `You are an elite US sales tax compliance expert at Zamp (zamp.ai). Your job is to analyze transaction data for a US business and write a highly professional, direct, and high-impact risk brief in exactly 3 to 4 sentences.
+    const systemPrompt = `You are an elite US sales tax compliance expert at Zamp (zamp.ai). Your job is to analyze transaction data for a US business and write a highly professional, direct, and high-impact risk brief in exactly 6 sentences.
 Tone: "Velocity is Survival" energy — direct, high-stakes, professional, and no fluff. Avoid generic filler text like "Based on the data you provided" or "Here is your report."
 Instructions:
 1. Direct attention to the top states where they have immediate risk (nexus triggered) or approaching risk.
 2. Quantify the total exposure (number of states and total revenue exposed).
 3. Warn them about the financial and regulatory risks of not filing (e.g., retroactive penalties, audit exposure).
-4. Provide one clear action: book a demo with Zamp to register and automate compliance.`;
+4. Sentence 4 MUST name the approaching states by name with exact dollar gaps.
+5. Sentence 5 MUST name the highest revenue state and say "register here first".
+6. Sentence 6 MUST mention Zamp by name and what it automates.
+7. Do not end with generic advice like "implement a robust system".`;
 
     const userPrompt = `Here is the economic sales tax nexus data:
 Total States with Nexus Triggered: ${nexusCount} (${nexusStates.join(', ') || 'None'})
@@ -36,7 +39,13 @@ Total Annual Revenue: $${totalRevenue.toLocaleString()}
 State-by-State breakdown:
 ${states.map(s => `- ${s.state}: Revenue $${s.revenue.toLocaleString()}, Transactions ${s.transactions}, Nexus: ${s.nexus ? 'TRIGGERED' : 'NO'}, Risk: ${s.risk}`).join('\n')}
 
-Provide the 3-4 sentence risk brief.`;
+Provide the risk brief.
+IMPORTANT: You must write exactly 6 sentences. Count them before responding.
+If you have fewer than 6 sentences, add more specific analysis from the data.
+Sentence 4 MUST name the approaching states by name with exact dollar gaps.
+Sentence 5 MUST name the highest revenue state and say "register here first".
+Sentence 6 MUST mention Zamp by name and what it automates.
+Do not end with generic advice like "implement a robust system".`;
 
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
@@ -49,8 +58,8 @@ Provide the 3-4 sentence risk brief.`;
             parts: [{ text: systemPrompt }]
           },
           generationConfig: {
-            temperature: 0.5,
-            maxOutputTokens: 1024
+            temperature: 0.7,
+            maxOutputTokens: 2048
           }
         })
       }

@@ -20,7 +20,7 @@ export default async function handler(req, res) {
 
   const prompt = `You are a sales tax compliance expert at Zamp. A company has shared their transaction data across US states.
 
-Write a concise 3-4 sentence plain-English risk brief that:
+Write a concise plain-English risk brief that:
 1. Names the top 2-3 highest-risk states by name with their specific dollar amounts
 2. States the total revenue exposed ($${summary.totalRevenue?.toLocaleString()})
 3. Flags which states are approaching nexus and need monitoring
@@ -33,7 +33,14 @@ States with nexus triggered: ${summary.nexusStates?.join(', ') || 'none'}
 States approaching nexus: ${summary.approachingStates?.join(', ') || 'none'}
 Total revenue at risk: $${summary.nexusRevenue?.toLocaleString()}
 
-Write in direct, plain English. No bullet points. No headers. No markdown. 3-4 sentences only.`;
+Write in direct, plain English. No bullet points. No headers. No markdown.
+
+IMPORTANT: You must write exactly 6 sentences. Count them before responding.
+If you have fewer than 6 sentences, add more specific analysis from the data.
+Sentence 4 MUST name the approaching states by name with exact dollar gaps.
+Sentence 5 MUST name the highest revenue state and say "register here first".
+Sentence 6 MUST mention Zamp by name and what it automates.
+Do not end with generic advice like "implement a robust system".`;
 
   try {
     const response = await fetch(
@@ -44,8 +51,8 @@ Write in direct, plain English. No bullet points. No headers. No markdown. 3-4 s
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
-            temperature: 0.4,
-            maxOutputTokens: 1024
+            temperature: 0.7,
+            maxOutputTokens: 2048
           }
         })
       }
