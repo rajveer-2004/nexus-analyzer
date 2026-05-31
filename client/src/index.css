@@ -1,0 +1,276 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Geist — all headings, nav, body */
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("https://www.zamp.ai/_next/static/media/22a5144ee8d83bca-s.p.woff2") format("woff2");
+}
+
+/* Geist Mono — all button text, CTAs, monospace UI elements */
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("https://www.zamp.ai/_next/static/media/f5271587012faf78-s.p.woff2") format("woff2");
+}
+
+:root {
+  --zamp-blue: #005eff;
+  --background: #f5f3f8;
+  --hero-background: #fdfdfd;
+  --body-color: #EFEFEF;
+  --cream-neutral: #f3f2ef;
+  --component-background: #171717;
+  --border-200: #d9d9d9;
+  --gray-350: #ededed;
+  --gray-450: #edf4ff;
+  --gray-550: #629cff;
+  --gray-650: #888;
+  --radius: 10px;
+  --ease: cubic-bezier(.4,0,.2,1);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #EFEFEF;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbcbcb;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #005eff;
+}
+
+/* Focus Indicator Ring */
+.focus-ring {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.focus-ring:focus-visible {
+  outline: 2px solid #005eff;
+  outline-offset: 2px;
+}
+
+/* Primary — Black filled (main CTA) */
+.btn-primary {
+  background: #000;
+  color: #F5F5F5;
+  border-radius: 9999px;
+  border: none;
+  padding: 0 32px;
+  height: 42px;
+  font-family: "Geist Mono", monospace;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 42px;
+  letter-spacing: -0.02em;
+  transition: all 0.2s ease-out;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: #302F37;
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Secondary — Frosted glass */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.6);
+  color: #302F37;
+  border-radius: 9999px;
+  border: 0.889px solid rgba(0, 0, 0, 0.1);
+  padding: 0 32px;
+  height: 42px;
+  font-family: "Geist Mono", monospace;
+  font-size: 17px;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.2);
+  transform: scale(1.03);
+}
+
+/* Blue filled */
+.btn-blue {
+  background: #005eff;
+  color: #fff;
+  border-radius: 12px;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.2s cubic-bezier(0.4,0,0.2,1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.btn-blue:hover {
+  background: #0047cc;
+}
+
+/* Footer text link with arrow */
+.footer-link {
+  background: none;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  font-family: Geist, system-ui, arial;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 4px;
+}
+
+/* Chat bubble card */
+.card-chat {
+  background: #E4E4E4;
+  border: 0.889px solid #D2D2D2;
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-family: "Geist Mono", monospace;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+/* Bento feature card */
+.card-bento {
+  background: #EFEFEF;
+  border: 0.889px solid #cbcbcb;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Investor / testimonial card */
+.card-investor {
+  background: #F9F8F8;
+  border: 1px solid #000;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+/* Page container overrides */
+.container-zamp {
+  max-width: 2500px;
+  margin: 0 auto;
+  padding-left: 72px;
+  padding-right: 72px;
+}
+@media (min-width: 1536px) {
+  .container-zamp {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+@media (max-width: 768px) {
+  .container-zamp {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* Zamp Dark Section with Blue Grid Line Accents */
+.dark-section {
+  background-color: #0d0d1a;
+  background-image:
+    linear-gradient(rgba(0, 94, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 94, 255, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Animations */
+@keyframes carousel-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33%); }
+}
+.carousel-track {
+  animation: carousel-scroll 40s linear infinite;
+}
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes zamp-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.pulse-dot {
+  animation: zamp-pulse 2s ease-in-out infinite;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Utility to hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Dynamic Nav Sliding Transition */
+nav {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Nav Link Font Synthesis Correction & Explicit Pure Black Fills */
+.nav-link-custom {
+  font-family: Geist, system-ui, arial;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #000000 !important;
+  font-synthesis: none;
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-link-custom:hover {
+  color: #005eff !important;
+}
+
+/* Page wrapper overrides: prevent trailing page margin/padding gaps */
+html, body, #root, main, .page {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
