@@ -39,7 +39,7 @@ ${states.map(s => `- ${s.state}: Revenue $${s.revenue.toLocaleString()}, Transac
 Provide the 3-4 sentence risk brief.`;
 
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
