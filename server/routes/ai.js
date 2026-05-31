@@ -50,7 +50,7 @@ Provide the 3-4 sentence risk brief.`;
           },
           generationConfig: {
             temperature: 0.5,
-            maxOutputTokens: 300
+            maxOutputTokens: 1024
           }
         })
       }

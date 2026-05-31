@@ -274,3 +274,12 @@ html, body, #root, main, .page {
   margin-bottom: 0 !important;
 }
 
+/* AI Brief body styling */
+.ai-brief-body {
+  font-family: Geist, system-ui, arial;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.75);
+}
+

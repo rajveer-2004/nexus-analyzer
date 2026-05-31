@@ -8,7 +8,7 @@ export default function AIBrief({ brief, loading, error }) {
       role="region"
       aria-label="AI Executive Risk Assessment"
     >
-      <div className="card-chat relative overflow-hidden shadow-sm">
+      <div className="card-chat relative shadow-sm">
         
         {/* Chat Ribbon Header */}
         <div className="flex items-center justify-between mb-4 border-b border-[#D2D2D2] pb-4">
@@ -22,7 +22,7 @@ export default function AIBrief({ brief, loading, error }) {
             </span>
           </div>
           <span className="font-mono text-[11px] text-black/45 uppercase tracking-[-0.06em]">
-            Powered by Claude
+            Powered by Gemini
           </span>
         </div>
 
@@ -33,7 +33,7 @@ export default function AIBrief({ brief, loading, error }) {
               <div className="w-2 h-2 rounded-full bg-zampBlue animate-bounce [animation-delay:-0.3s]" />
               <div className="w-2 h-2 rounded-full bg-zampBlue animate-bounce [animation-delay:-0.15s]" />
               <div className="w-2 h-2 rounded-full bg-zampBlue animate-bounce" />
-              <span className="font-mono text-xs text-black/55 tracking-[-0.02em]">Claude is analyzing your risk posture...</span>
+              <span className="font-mono text-xs text-black/55 tracking-[-0.02em]">Gemini is analyzing your risk posture...</span>
             </div>
             <div className="flex flex-col gap-2.5 mt-2">
               <div className="h-4 bg-black/5 rounded w-full animate-pulse" />
@@ -47,13 +47,13 @@ export default function AIBrief({ brief, loading, error }) {
               <AlertTriangle size={16} />
               <span>Offline Scan Fallback Loaded</span>
             </div>
-            <p className="font-mono text-sm leading-[22px] tracking-[-0.02em] italic">
+            <p className="ai-brief-body" style={{ fontStyle: 'italic' }}>
               {brief}
             </p>
           </div>
         ) : (
           <div className="py-2" aria-live="polite">
-            <p className="font-mono text-sm sm:text-base leading-[22px] tracking-[-0.02em] text-black">
+            <p className="ai-brief-body">
               {brief}
             </p>
           </div>

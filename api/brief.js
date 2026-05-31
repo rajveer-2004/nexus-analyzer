@@ -45,7 +45,7 @@ Write in direct, plain English. No bullet points. No headers. No markdown. 3-4 s
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
             temperature: 0.4,
-            maxOutputTokens: 512
+            maxOutputTokens: 1024
           }
         })
       }
